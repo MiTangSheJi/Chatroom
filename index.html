@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <h1>这是一个聊天模拟器</h1>
+    </header>
+
+    <section class="content">
+        <div class="title">
+            <!-- <div class="fl"><i class="iconfont icon-jiantou"></i></div>
+            <div class="fr">
+                <i class="iconfont icon-dian fl"></i>
+                <i class="iconfont icon-dian fl"></i>
+                <i class="iconfont icon-dian fl"></i>
+            </div> -->
+            <div class="name">儿子</div>
+
+        </div>
+
+        <div class="box">
+            <!-- <div class="talk clearfix">
+                <div class="image fr"><img src="./images/头像.png" alt=""></div>
+                <div class="text fr">这是一行测试文本的文本测试的是我需要的长度，大小，颜色。这是一行测试文本的文本测试的是我需要的长度，大小，颜色。</div>
+            </div>
+
+            <div class="talk clearfix">
+                <div class="image fl"><img src="./images/头像.png" alt=""></div>
+                <div class="son text fl">这是一行测试文本的文本测试的是我需要的长度，大小，颜色。这是一行测试文本的文本测试的是我需要的长度，大小，颜色。</div>
+            </div> -->
+
+        </div>
+
+        <div class="user">
+            <div class="nav">
+                <div class="expe icon-xiaolianchenggong iconfont"></div>
+            </div>
+            <div class="input">
+                <form class="set" action="">
+                    <textarea class="text-area" name="" id="" cols="30" rows="10"></textarea>
+                    <input class="btn" type="submit" value="发送">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/index.js"></script>
+    <script>
+        
+        function createDiv(imgName, textName, content) {
+            var div = document.createElement("div");
+            div.className = "talk clearfix";
+
+            var divImage = document.createElement("div");
+            var img = document.createElement("img");
+            img.setAttribute("src", "./images/头像.png");
+            divImage.className = imgName;
+            divImage.appendChild(img);
+
+            var divText = document.createElement("div");
+            var textNode = document.createTextNode(content);
+            divText.className = textName;
+
+            divText.appendChild(textNode);
+            div.appendChild(divImage);
+            div.appendChild(divText);
+
+            return div;
+        }
+
+        function talk() {
+            var box = document.getElementsByClassName("box")[0];
+
+            var textarea = document.getElementsByTagName("textarea")[0];
+            var btn = document.getElementsByTagName("input")[0];
+
+            var sonTalk = ["真是太对了", "没错", "我是憨逼", "你别说了", "拜拜", "吃屎呢？", "哎呀呀", "你是我爹", "木马", "晚安"];
+
+            btn.onclick = function () {
+
+                var content = textarea.value;
+                if (content == "") {
+                    alert("请输入内容");
+                    return false;
+                }
+                var sorry = sonTalk[parseInt(Math.floor(Math.random() * 10))];
+                var father = createDiv("image fr", "text fr", content);
+                box.appendChild(father);
+                var son = createDiv("image fl", "text fl son", sorry);
+                box.appendChild(son);
+
+                var len = box.scrollHeight + 140;
+                box.scroll(0,len);
+
+                textarea.value = "";
+                return false;
+            }
+        }
+        talk();
+
+
+
+
+    </script>
+</body>
+
+</html>
